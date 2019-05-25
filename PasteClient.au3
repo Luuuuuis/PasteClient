@@ -11,11 +11,11 @@
 FileCreateShortcut(@ScriptFullPath, @StartupDir & "\PasteClient.lnk")
 
 If _Singleton(@ScriptName, 1) = 0 Then
-   TrayTip(@ScriptName & " is already running", "Stop all other applications", 3, 2)
+   TrayTip(@ScriptName & " is already running", "Stop all other applications first", 3, 2)
    Exit
 EndIf
 
-ConsoleWrite("PasteClient by @realluuuuuis started!" & @LF)
+ConsoleWrite("PasteClient by @realluuuuuis was started!" & @LF)
 
 
 HotKeySet("!u", "_KeyPressed")
@@ -26,7 +26,7 @@ While 1
 WEnd
 
 Func _KeyPressed()
-   ; Wurde gedrückt
+   ; pressed
 
    $Clip = ClipGet()
    If @error Then
@@ -75,6 +75,6 @@ Func _Upload($Clip)
 
    ClipPut("https://haste.luis.team/" & $key)
 
-   TrayTip("Erfolgreich hochgeladen!", "The link was copied into the clipboard. Press Alt+U to open it in your browser.", 3, 1)
+   TrayTip("Successfully uploaded!", "The link was copied into the clipboard. Press Alt+U to open it in your browser.", 3, 1)
 
 EndFunc
